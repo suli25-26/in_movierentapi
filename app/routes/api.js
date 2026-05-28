@@ -14,16 +14,14 @@ router.get('/users/:id', [verifyToken], UserController.show)
 router.put('/users/:id/password', [verifyToken], UserController.updatePassword)
 router.delete('/users/:id', [verifyToken], UserController.destroy)
 
-router.get('/movies', MovieController.index);
+//Filemek
+router.get('/movies', [verifyToken], MovieController.index);
 router.get('/movies/:id', MovieController.show);
-
-//ezt le kell védeni:
 router.post('/movies', [verifyToken], MovieController.store);
-
-
 router.put('/movies/:id', MovieController.update);
 router.delete('/movies/:id', MovieController.destroy);
 
+//Kölcsönzések
 router.get('/rentals', RentalController.index);
 router.get('/rentals/:id', RentalController.show);
 router.post('/rentals', RentalController.store);
